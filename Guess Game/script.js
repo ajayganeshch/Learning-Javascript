@@ -76,4 +76,4 @@ let p = function () {
 };
 document.querySelector(".again").addEventListener("click", p);
 
-// document.querySelector(".check").addEventListener("click", x);
+document.querySelector(".check").addEventListener("click", x);
