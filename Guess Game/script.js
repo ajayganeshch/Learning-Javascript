@@ -5,7 +5,6 @@
 let y;
 let score = 20;
 let snum = Math.trunc(Math.random() * 20) + 1;
-console.log(snum);
 let temp;
 
 let msg = document.querySelector(".message");
