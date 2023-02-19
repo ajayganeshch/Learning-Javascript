@@ -32,8 +32,9 @@ let x = function () {
     bg.style.backgroundColor = "#222";
     xyz(".message", "Number should be 1 to 20");
     document.querySelector(".guess").value = "";
+    bgc("#ff0000");
   } else if (y === " ") {
-    bgc("#222");
+    bgc("#ff0000");
     xyz(".message", "😒 Please Enter Number and Click On check");
   } else if (y === snum) {
     xyz(".message", "🍾 Correct Number");
@@ -45,7 +46,7 @@ let x = function () {
       xyz(".highscore", hscore);
     }
   } else if (y !== snum) {
-    bgc("#222");
+    bgc("#ff0000");
     xyz(".number", "?");
 
     if (score > 1) {

@@ -15,7 +15,7 @@ body {
   font-family: "Press Start 2P", sans-serif;
   color: #eee;
   background-color: #222;
-  /* background-color: #60b347; */
+  /* background-color: #ff0000; */
 }
 
 /* LAYOUT */
@@ -26,7 +26,7 @@ header {
 }
 
 main {
-  height: 65vh;
+  height: 58vh;
   color: #eee;
   display: flex;
   align-items: center;
@@ -118,4 +118,18 @@ h1 {
 
 .label-score {
   margin-bottom: 2rem;
+}
+
+.last {
+  font-family: Arial;
+  font-size: 14px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+a:link {
+  color: greenyellow;
+}
+a:hover {
+  color: lightskyblue;
 }
