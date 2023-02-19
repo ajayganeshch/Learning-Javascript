@@ -21,6 +21,22 @@ let snum = Math.trunc(Math.random() * 20) + 1;
 
 let msg = document.querySelector(".message");
 
+let smessage = function (lmessage) {
+  document.querySelector(".message").textContent = lmessage;
+};
+
+let sscore = function (lscore) {
+  document.querySelector(".score").textContent = lscore;
+};
+
+let bgc = function (bgcc) {
+  document.querySelector("body").style.backgroundColor = bgcc;
+};
+
+let nnumber = function (nnum) {
+  document.querySelector(".number").textContent = nnum;
+};
+
 let hscore = 0;
 
 let bg = document.querySelector("body");
@@ -30,19 +46,16 @@ let x = function () {
     ? Number(document.querySelector(".guess").value)
     : " ";
 
-  // console.log(y);
-  // || y < 0 || y > 20
   if (y === 0) {
     bg.style.backgroundColor = "#222";
     msg.textContent = "Number should be 1 to 20";
   } else if (y === " ") {
     bg.style.backgroundColor = "#222";
-    document.querySelector(".message").textContent =
-      "😒 Please Enter Number and Click On check!";
+    smessage("😒 Please Enter Number and Click On check!");
   } else if (y === snum) {
-    document.querySelector(".message").textContent = "🍾 Correct Number";
-    document.querySelector("body").style.backgroundColor = "#60b347";
-    document.querySelector(".number").textContent = snum;
+    smessage("🍾 Correct Number");
+    bgcc("#60b347");
+    nnum(snum);
 
     if (score > hscore) {
       hscore = score;
@@ -50,15 +63,14 @@ let x = function () {
     }
   } else if (y !== snum) {
     bg.style.backgroundColor = "#222";
-    document.querySelector(".number").textContent = "?";
+    nnum("?");
     if (score > 1) {
-      document.querySelector(".message").textContent =
-        y < snum ? "📉 Too Low" : "📉 Too High";
+      smessage(y < snum ? "📉 Too Low" : "📉 Too High");
       score--;
-      document.querySelector(".score").textContent = score;
+      sscore(score);
     } else {
-      document.querySelector(".message").textContent = "🙁 You lost Game";
-      document.querySelector(".score").textContent = 0;
+      smessage("🙁 You lost Game");
+      sscore(0);
     }
   }
 };
@@ -66,14 +78,14 @@ let x = function () {
 document.querySelector(".check").addEventListener("click", x);
 
 let p = function () {
-  document.querySelector(".message").textContent = "😏 Start guessing...";
+  smessage("😏 Start guessing...");
   score = 20;
   document.querySelector(".score").textContent = score;
   snum = Math.trunc(Math.random() * 20) + 1;
   document.querySelector(".guess").value = "";
-  document.querySelector("body").style.backgroundColor = "#222";
-  document.querySelector(".number").textContent = "?";
+  bgc("#222");
+  nnum("?");
 };
 document.querySelector(".again").addEventListener("click", p);
 
-document.querySelector(".check").addEventListener("click", x);
+// document.querySelector(".check").addEventListener("click", x);
