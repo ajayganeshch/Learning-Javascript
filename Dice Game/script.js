@@ -96,7 +96,7 @@ let rollDice = function () {
 };
 
 let checkWinner = function (fin) {
-  if (fin >= 10) {
+  if (fin >= 100) {
     document
       .querySelector(`.player--${playerNow}`)
       .classList.add("player--winner");
