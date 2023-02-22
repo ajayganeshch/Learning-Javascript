@@ -1,7 +1,5 @@
 "use strict";
 
-// console.log(textFunction("#score--1"));
-
 let score1 = 0;
 let score2 = 0;
 
@@ -20,6 +18,12 @@ let i = 0; // "i" for iteration
 
 let finalScore = 0; // Variable To Store Final Score
 
+let randomPlayer;
+let tempNow;
+let playerNow;
+
+document.querySelector(".pop--up").classList.add("hidden");
+
 let xyz = function (pqrs, tuv) {
   // To replace values
   temp = document.querySelector(pqrs);
@@ -36,6 +40,42 @@ let textFunction = function (classid) {
   return abc;
 };
 
+let choosePlayer = function () {
+  if (
+    textFunction("#current--1") != 0 ||
+    textFunction("#current--2") != 0 ||
+    textFunction("#score--1") != 0 ||
+    textFunction("#score--2") != 0
+  ) {
+    // console.log("ok entered");
+    docQue(".pop--up").classList.remove("hidden");
+
+    // removePopUp();
+  } else {
+    randomPlayer = Math.trunc(Math.random() * 2) + 1;
+    tempNow = randomPlayer === 1 ? 2 : 1;
+    playerNow = randomPlayer;
+    document
+      .querySelector(`.player--${randomPlayer}`)
+      .classList.add("player--active");
+    document
+      .querySelector(`.player--${tempNow}`)
+      .classList.remove("player--active");
+  }
+  return playerNow;
+};
+
+let removePopUp = function () {
+  if (!docQue(".pop--up").classList.contains("hidden")) {
+    docQue(".pop--up").classList.add("hidden");
+    console.log("ok entered pop up");
+  }
+
+  newGame();
+};
+
+playerNow = choosePlayer();
+
 let diceImg = function (ranNum) {
   diceSelector.src = `dice-${ranNum}.png`;
 };
@@ -48,8 +88,6 @@ let diceSelector = docQue(".dice");
 let player1 = docQue(".player--1");
 let player2 = docQue(".player--2");
 
-let playerNow = 1;
-
 let playSwitch = function (tempPlay) {
   playerNow = tempPlay === 1 ? 2 : 1;
 
@@ -57,12 +95,10 @@ let playSwitch = function (tempPlay) {
   docQue(".player--2").classList.toggle("player--active");
 };
 
-let checkPlay = !document
-  .querySelector(`.player--${playerNow}`)
-  .classList.contains("player--winner");
+let isWinnerThere = false;
 
 let rollDice = function () {
-  if (checkPlay) {
+  if (!isWinnerThere) {
     if (playerNow === 1) {
       randomNumber = Math.trunc(Math.random() * 6) + 1;
 
@@ -96,15 +132,15 @@ let rollDice = function () {
 };
 
 let checkWinner = function (fin) {
-  if (fin >= 100) {
+  if (fin >= 20) {
     document
       .querySelector(`.player--${playerNow}`)
       .classList.add("player--winner");
-    checkPlay = false;
+    isWinnerThere = true;
   }
 };
 let finalAnswer = function () {
-  if (checkPlay) {
+  if (!isWinnerThere) {
     if (playerNow === 1) {
       finalScore =
         Number(textFunction("#current--1")) + Number(textFunction("#score--1"));
@@ -131,9 +167,9 @@ let newGame = function () {
   docQue("#score--1").textContent = 0;
   docQue("#score--2").textContent = 0;
 
-  if (playerNow === 2) {
-    playSwitch(playerNow);
-  }
+  // if (playerNow === 2) {
+  //   playSwitch(playerNow);
+  // }
 
   if (
     document.querySelector(".player--1").classList.contains("player--winner")
@@ -143,7 +179,9 @@ let newGame = function () {
     document.querySelector(".player--2").classList.remove("player--winner");
   }
 
-  checkPlay = true;
+  isWinnerThere = false;
+
+  playerNow = choosePlayer();
 };
 
 docQue(".btn--roll").addEventListener("click", rollDice);
@@ -151,3 +189,7 @@ docQue(".btn--roll").addEventListener("click", rollDice);
 docQue(".btn--hold").addEventListener("click", finalAnswer);
 
 docQue(".btn--new").addEventListener("click", newGame);
+
+docQue(".btn--pvp").addEventListener("click", choosePlayer);
+
+docQue(".btn--ok").addEventListener("click", removePopUp);

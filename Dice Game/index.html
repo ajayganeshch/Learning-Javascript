@@ -8,8 +8,8 @@
     <title>Pig Game</title>
   </head>
   <body>
-    <button class="btnpvp btn-pvp">👦 Player Vs Player</button>
-    <button class="btnpvc btn-pvc">👦 Player Vs Computer [Soon...]</button>
+    <button class="btnpvp btn--pvp">👦 Player Vs Player</button>
+    <button class="btnpvc btn--pvc">👦 Player Vs Computer [Soon...]</button>
     <main>
       <section class="player player--1 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -32,7 +32,19 @@
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
+
+      <div class="pop--up hidden">
+        <button class="close-modal">&times;</button>
+        <p class="text--pop">
+          ⚠️ All results will be reset Because You are click this button in
+          middle of the game.
+        </p>
+        <button class="btn--ok">Ok</button>
+      </div>
     </main>
+
+    <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
