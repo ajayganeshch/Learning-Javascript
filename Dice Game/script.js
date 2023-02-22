@@ -18,9 +18,9 @@ let i = 0; // "i" for iteration
 
 let finalScore = 0; // Variable To Store Final Score
 
-let randomPlayer;
+let randomPlayer; // This variable selects which player have to play
 let tempNow;
-let playerNow;
+let playerNow; // Player playing now
 
 document.querySelector(".pop--up").classList.add("hidden");
 
