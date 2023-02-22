@@ -184,6 +184,12 @@ let newGame = function () {
   playerNow = choosePlayer();
 };
 
+let closePopUp = function () {
+  if (!docQue(".pop--up").classList.contains("hidden")) {
+    docQue(".pop--up").classList.add("hidden");
+  }
+};
+
 docQue(".btn--roll").addEventListener("click", rollDice);
 
 docQue(".btn--hold").addEventListener("click", finalAnswer);
@@ -193,3 +199,5 @@ docQue(".btn--new").addEventListener("click", newGame);
 docQue(".btn--pvp").addEventListener("click", choosePlayer);
 
 docQue(".btn--ok").addEventListener("click", removePopUp);
+
+docQue(".close-modal").addEventListener("click", closePopUp);
