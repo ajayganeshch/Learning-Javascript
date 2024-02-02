@@ -3,6 +3,17 @@ icons = iconsTemp.split("?")[0];
 
 export default class View {
   _data;
+
+  /**
+   *
+   * @param {Object | Object[]} data Data to render
+   * @param {boolean} [render=true] Have to render to DOM or just validate data and get markup
+   * @param {boolean} check Validate the data or not
+   * @returns {undefined | string} if data is wrong it returns the error message and if no need to render then this just returns markup
+   * @this {Object} View instance
+   * @author Ajay Ganesh
+   */
+
   render(data, render = true, check = true) {
     if (check) {
       if (!data || (Array.isArray(data) && data.length === 0))
